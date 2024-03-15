@@ -5,7 +5,7 @@ import vehbook.vehiclebooker.model.User;
 
 @Service
 public class UserService {
-    private UserService() {};
+    private UserService() {}
     public static User getUser(Long id) {
         return new User(id, "+3753356703174");
     }
