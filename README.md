@@ -3,7 +3,7 @@ For first this is a project for my university.
 This is a instrument that can be used to easly add booking posibility for some transportation unit. (In future, i hope, not now)
 
 # Dependencies
-Spring Boot
+- Spring Boot
 
 # Building
 1. Clone this repository
@@ -11,6 +11,6 @@ Spring Boot
 
 # Endpoints
 ## GET
-/users?id={number}
-where {number} is a id of a person
+`/users?id={number}`
+where {number} is a id of a person.
 The return value is a JSON file that gives you phone number of a person with specified id.
