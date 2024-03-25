@@ -8,8 +8,9 @@ import vehbook.vehiclebooker.service.UserService;
 
 @RestController
 public class UserController {
+    private final UserService userService = new UserService();
     @GetMapping("/users")
     public User getUser(@RequestParam Long id) {
-        return UserService.getUser(id);
+        return userService.getUser(id);
     }
 }

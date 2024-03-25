@@ -6,8 +6,11 @@ import vehbook.vehiclebooker.repository.UserRepository;
 
 @Service
 public class UserService {
+    private final UserRepository users = new UserRepository();
+
     public UserService() {}
-    public static User getUser(Long id) {
-        return UserRepository.getUser(id);
+
+    public User getUser(Long id) {
+        return users.getUser(id);
     }
 }
