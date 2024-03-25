@@ -8,7 +8,9 @@ import vehbook.vehiclebooker.repository.UserRepository;
 public class UserService {
     private final UserRepository users = new UserRepository();
 
-    public UserService() {}
+    public UserService() {
+        // shows explicitly that this constructor exists
+    }
 
     public User getUser(Long id) {
         return users.getUser(id);
