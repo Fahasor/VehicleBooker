@@ -13,6 +13,6 @@ public class UserService {
     }
 
     public User getUser(Long id) {
-        return users.getUser(id);
+        return users.getUser(id); 
     }
 }
