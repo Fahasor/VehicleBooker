@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import vehbook.vehiclebooker.model.UserIdentity;
 import vehbook.vehiclebooker.repository.UserIdentityRepository;
 
+import java.math.BigInteger;
+
 @Service
 public class UserIdentityService {
     private final UserIdentityRepository users;
@@ -14,7 +16,10 @@ public class UserIdentityService {
         this.users = userIdentityRepository;
     }
 
-    public UserIdentity getUserIdentity(String id) {
+    public UserIdentity getUserIdentity(BigInteger id) {
         return users.findById(id).orElseThrow();
+    }
+    public UserIdentity createUserIdentity(UserIdentity userIdentity) {
+        return users.save(userIdentity);
     }
 }

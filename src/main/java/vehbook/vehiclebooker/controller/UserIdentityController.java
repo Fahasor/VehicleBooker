@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import vehbook.vehiclebooker.model.UserIdentity;
 import vehbook.vehiclebooker.service.UserIdentityService;
 
+import java.math.BigInteger;
+
 @RestController
 public class UserIdentityController {
     private final UserIdentityService userIdentityService;
@@ -15,7 +17,12 @@ public class UserIdentityController {
     }
 
     @GetMapping("/users")
-    public UserIdentity getIdentityUser(@RequestParam String id) {
+    public UserIdentity getIdentityUser(@RequestParam BigInteger id) {
         return userIdentityService.getUserIdentity(id);
+    }
+
+    @PostMapping("/users")
+    public UserIdentity createIdentityUser(@RequestBody UserIdentity userIdentity) {
+        return userIdentityService.createUserIdentity(userIdentity);
     }
 }
