@@ -1,18 +1,20 @@
 package vehbook.vehiclebooker.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vehbook.vehiclebooker.model.UserIdentity;
 import vehbook.vehiclebooker.repository.UserIdentityRepository;
 
 @Service
 public class UserIdentityService {
-    private final UserIdentityRepository users = new UserIdentityRepository();
+    private final UserIdentityRepository users;
 
-    public UserIdentityService() {
-        // shows explicitly that this constructor exists
+    @Autowired
+    public UserIdentityService(UserIdentityRepository userIdentityRepository) {
+        this.users = userIdentityRepository;
     }
 
-    public UserIdentity getUser(Long id) {
-        return users.getUser(id); 
+    public UserIdentity getUserIdentity(String id) {
+        return users.findById(id).orElseThrow();
     }
 }
