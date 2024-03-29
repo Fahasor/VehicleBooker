@@ -17,12 +17,12 @@ public class UserIdentityController {
     }
 
     @GetMapping("/users")
-    public UserIdentity getIdentityUser(@RequestParam BigInteger id) {
+    public UserIdentity getUserIdentityById(@RequestParam BigInteger id) {
         return userIdentityService.getUserIdentity(id);
     }
 
     @PostMapping("/users")
-    public UserIdentity createIdentityUser(@RequestBody UserIdentity userIdentity) {
+    public UserIdentity createUserIdentity(@RequestBody UserIdentity userIdentity) {
         return userIdentityService.createUserIdentity(userIdentity);
     }
 }
