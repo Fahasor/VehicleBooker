@@ -1,6 +1,5 @@
-# Description
-For first this is a project for my university. 
-This is a instrument that can be used to easly add booking posibility for some transportation unit. (In future, i hope, not now)
+# Vehicle Booker
+This is a project for university, but in general this is a instrument that can be used by drivers to add booking posibility for some transportation unit. (In future, i hope, not now)
 
 # Dependencies
 - Spring Boot
