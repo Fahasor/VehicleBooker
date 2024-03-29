@@ -8,6 +8,6 @@ public class UserRepository {
     }
 
     public User getUser(Long id) {
-        return new User(id, "+375296897070");
+        return new User();
     }
 }
