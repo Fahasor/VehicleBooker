@@ -1,21 +1,17 @@
 package vehbook.vehiclebooker.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import java.math.BigInteger;
-
+@Table(name = "user_identity")
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class UserIdentity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private BigInteger id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
-    @Column(unique = true)
+    @Column(name = "phone_number", unique = true)
     private String phoneNumber;
 }

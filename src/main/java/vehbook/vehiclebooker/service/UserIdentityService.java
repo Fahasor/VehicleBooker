@@ -6,6 +6,7 @@ import vehbook.vehiclebooker.model.UserIdentity;
 import vehbook.vehiclebooker.repository.UserIdentityRepository;
 
 import java.math.BigInteger;
+import java.util.List;
 
 @Service
 public class UserIdentityService {
@@ -16,8 +17,8 @@ public class UserIdentityService {
         this.users = userIdentityRepository;
     }
 
-    public UserIdentity getUserIdentity(BigInteger id) {
-        return users.findById(id).orElseThrow();
+    public UserIdentity getUserIdentity(String phoneNumber) {
+        return users.findByPhoneNumber(phoneNumber);
     }
     public UserIdentity createUserIdentity(UserIdentity userIdentity) {
         return users.save(userIdentity);

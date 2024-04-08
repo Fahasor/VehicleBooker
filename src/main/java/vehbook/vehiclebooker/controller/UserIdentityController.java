@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import vehbook.vehiclebooker.model.UserIdentity;
 import vehbook.vehiclebooker.service.UserIdentityService;
 
-import java.math.BigInteger;
+import java.util.List;
 
 @RestController
 public class UserIdentityController {
@@ -17,8 +17,8 @@ public class UserIdentityController {
     }
 
     @GetMapping("/users")
-    public UserIdentity getUserIdentityById(@RequestParam BigInteger id) {
-        return userIdentityService.getUserIdentity(id);
+    public UserIdentity getUserIdentityByPhoneNumber(@RequestParam String phoneNumber) {
+        return userIdentityService.getUserIdentity(phoneNumber);
     }
 
     @PostMapping("/users")
