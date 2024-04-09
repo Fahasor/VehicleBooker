@@ -7,6 +7,7 @@ import vehbook.vehiclebooker.service.UserIdentityService;
 
 import java.util.List;
 
+@RequestMapping("/users")
 @RestController
 public class UserIdentityController {
     private final UserIdentityService userIdentityService;
@@ -16,13 +17,12 @@ public class UserIdentityController {
         this.userIdentityService = service;
     }
 
-    @GetMapping("/users")
-    public UserIdentity getUserIdentityByPhoneNumber(@RequestParam String phoneNumber) {
-        return userIdentityService.getUserIdentity(phoneNumber);
-    }
-
-    @PostMapping("/users")
+    @PostMapping
     public UserIdentity createUserIdentity(@RequestBody UserIdentity userIdentity) {
         return userIdentityService.createUserIdentity(userIdentity);
+    }
+    @GetMapping
+    public UserIdentity getUserIdentityByPhoneNumber(@RequestParam String phoneNumber) {
+        return userIdentityService.getUserIdentity(phoneNumber);
     }
 }

@@ -13,5 +13,5 @@ import java.util.Optional;
 
 @Repository
 public interface UserIdentityRepository extends JpaRepository<UserIdentity, Long> {
-    UserIdentity findByPhoneNumber(@Param("phone_number") String phoneNumber);
+    Optional<UserIdentity> findByPhoneNumber(String phoneNumber);
 }

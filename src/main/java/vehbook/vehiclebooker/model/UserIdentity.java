@@ -3,15 +3,15 @@ package vehbook.vehiclebooker.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Table(name = "user_identity")
+@Table
 @Entity
 @Data
 @NoArgsConstructor
 public class UserIdentity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
-    @Column(name = "phone_number", unique = true)
+    @Column(unique = true)
     private String phoneNumber;
 }
