@@ -1,18 +1,13 @@
 package vehbook.vehiclebooker.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vehbook.vehiclebooker.model.UserIdentity;
 import vehbook.vehiclebooker.service.UserIdentityService;
 
-import java.util.List;
-import java.util.NoSuchElementException;
-
-@RequestMapping("/users")
 @RestController
+@RequestMapping("/users")
 public class UserIdentityController {
     private final UserIdentityService userIdentityService;
 
@@ -27,17 +22,17 @@ public class UserIdentityController {
         userIdentityService.update(userIdentity);
     }
     @GetMapping
-    public UserIdentity getUserIdentityByPhoneNumber(@RequestParam String phoneNumber) {
-        return userIdentityService.getUserIdentity(phoneNumber);
+    public UserIdentity getByPhoneNumber(@RequestParam String phoneNumber) {
+        return userIdentityService.findByPhoneNumber(phoneNumber);
     }
     @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteUserIdentityById(@RequestParam Long id) {
+    public void deleteById(@RequestParam Long id) {
         userIdentityService.deleteById(id);
     }
     @PutMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody UserIdentity userIdentity) {
-        userIdentityService.createUserIdentity(userIdentity);
+        userIdentityService.create(userIdentity);
     }
 }

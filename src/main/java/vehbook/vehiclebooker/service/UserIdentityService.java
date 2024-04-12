@@ -5,28 +5,26 @@ import org.springframework.stereotype.Service;
 import vehbook.vehiclebooker.model.UserIdentity;
 import vehbook.vehiclebooker.repository.UserIdentityRepository;
 
-import java.util.Optional;
-
 @Service
 public class UserIdentityService {
-    private final UserIdentityRepository users;
+    private final UserIdentityRepository userIdentityService;
 
     @Autowired
     public UserIdentityService(UserIdentityRepository userIdentityRepository) {
-        this.users = userIdentityRepository;
+        this.userIdentityService = userIdentityRepository;
     }
 
-    public UserIdentity getUserIdentity(String phoneNumber) {
-        return users.findByPhoneNumber(phoneNumber).orElseThrow();
+    public UserIdentity findByPhoneNumber(String phoneNumber) {
+        return userIdentityService.findByPhoneNumber(phoneNumber).orElseThrow();
     }
-    public void createUserIdentity(UserIdentity userIdentity) {
-        users.save(userIdentity);
+    public void create(UserIdentity userIdentity) {
+        userIdentityService.save(userIdentity);
     }
     public void update(UserIdentity userIdentity) {
-        users.findById(userIdentity.getId()).orElseThrow();
-        users.save(userIdentity);
+        userIdentityService.findById(userIdentity.getId()).orElseThrow();
+        userIdentityService.save(userIdentity);
     }
     public void deleteById(Long id) {
-        users.delete(users.findById(id).orElseThrow());
+        userIdentityService.delete(userIdentityService.findById(id).orElseThrow());
     }
 }
