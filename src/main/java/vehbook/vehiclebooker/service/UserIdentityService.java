@@ -7,24 +7,24 @@ import vehbook.vehiclebooker.repository.UserIdentityRepository;
 
 @Service
 public class UserIdentityService {
-    private final UserIdentityRepository userIdentityService;
+    private final UserIdentityRepository users;
 
     @Autowired
     public UserIdentityService(UserIdentityRepository userIdentityRepository) {
-        this.userIdentityService = userIdentityRepository;
+        this.users = userIdentityRepository;
     }
 
     public UserIdentity findByPhoneNumber(String phoneNumber) {
-        return userIdentityService.findByPhoneNumber(phoneNumber).orElseThrow();
+        return users.findByPhoneNumber(phoneNumber).orElseThrow();
     }
     public void create(UserIdentity userIdentity) {
-        userIdentityService.save(userIdentity);
+        users.save(userIdentity);
     }
     public void update(UserIdentity userIdentity) {
-        userIdentityService.findById(userIdentity.getId()).orElseThrow();
-        userIdentityService.save(userIdentity);
+        users.findById(userIdentity.getId()).orElseThrow();
+        users.save(userIdentity);
     }
     public void deleteById(Long id) {
-        userIdentityService.delete(userIdentityService.findById(id).orElseThrow());
+        users.delete(users.findById(id).orElseThrow());
     }
 }
