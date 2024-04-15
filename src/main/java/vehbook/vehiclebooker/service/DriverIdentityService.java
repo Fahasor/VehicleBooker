@@ -14,11 +14,11 @@ public class DriverIdentityService {
         this.driverIdentityService = driverIdentityRepository;
     }
 
-    public DriverIdentity findByPhoneNumber(String phoneNumber) {
-        return driverIdentityService.findByPhoneNumber(phoneNumber).orElseThrow();
-    }
     public void create(DriverIdentity driverIdentity) {
         driverIdentityService.save(driverIdentity);
+    }
+    public DriverIdentity findByPhoneNumber(String phoneNumber) {
+        return driverIdentityService.findByPhoneNumber(phoneNumber).orElseThrow();
     }
     public void update(DriverIdentity driverIdentity) {
         driverIdentityService.findById(driverIdentity.getId()).orElseThrow();

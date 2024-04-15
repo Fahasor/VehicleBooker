@@ -16,23 +16,23 @@ public class UserIdentityController {
         this.userIdentityService = service;
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@RequestBody UserIdentity userIdentity) {
-        userIdentityService.update(userIdentity);
+    @PutMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void create(@RequestBody UserIdentity userIdentity) {
+        userIdentityService.create(userIdentity);
     }
     @GetMapping
     public UserIdentity getByPhoneNumber(@RequestParam String phoneNumber) {
         return userIdentityService.findByPhoneNumber(phoneNumber);
     }
+    @PostMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void update(@RequestBody UserIdentity userIdentity) {
+        userIdentityService.update(userIdentity);
+    }
     @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@RequestParam Long id) {
         userIdentityService.deleteById(id);
-    }
-    @PutMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody UserIdentity userIdentity) {
-        userIdentityService.create(userIdentity);
     }
 }

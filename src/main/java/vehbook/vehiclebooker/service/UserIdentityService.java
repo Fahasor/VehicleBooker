@@ -14,11 +14,11 @@ public class UserIdentityService {
         this.users = userIdentityRepository;
     }
 
-    public UserIdentity findByPhoneNumber(String phoneNumber) {
-        return users.findByPhoneNumber(phoneNumber).orElseThrow();
-    }
     public void create(UserIdentity userIdentity) {
         users.save(userIdentity);
+    }
+    public UserIdentity findByPhoneNumber(String phoneNumber) {
+        return users.findByPhoneNumber(phoneNumber).orElseThrow();
     }
     public void update(UserIdentity userIdentity) {
         users.findById(userIdentity.getId()).orElseThrow();

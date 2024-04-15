@@ -16,23 +16,23 @@ public class DriverIdentityController {
         driverIdentityService = service;
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@RequestBody DriverIdentity driverIdentity) {
-        driverIdentityService.update(driverIdentity);
+    @PutMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void create(@RequestBody DriverIdentity driverIdentity) {
+        driverIdentityService.create(driverIdentity);
     }
     @GetMapping
     public DriverIdentity getByPhoneNumber(@RequestParam String phoneNumber) {
         return driverIdentityService.findByPhoneNumber(phoneNumber);
     }
+    @PostMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void update(@RequestBody DriverIdentity driverIdentity) {
+        driverIdentityService.update(driverIdentity);
+    }
     @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@RequestParam Long id) {
         driverIdentityService.deleteById(id);
-    }
-    @PutMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody DriverIdentity driverIdentity) {
-        driverIdentityService.create(driverIdentity);
     }
 }

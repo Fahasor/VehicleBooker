@@ -14,11 +14,11 @@ public class PendingDriveRecordService {
         this.driveRecordRepository = driveRecordRepository;
     }
 
-    public PendingDriveRecord findById(long id) {
-        return driveRecordRepository.findById(id).orElseThrow();
-    }
     public void create(PendingDriveRecord driverIdentity) {
         driveRecordRepository.save(driverIdentity);
+    }
+    public PendingDriveRecord findById(long id) {
+        return driveRecordRepository.findById(id).orElseThrow();
     }
     public void update(PendingDriveRecord pendingDriveRecord) {
         driveRecordRepository.findById(pendingDriveRecord.getId()).orElseThrow();
