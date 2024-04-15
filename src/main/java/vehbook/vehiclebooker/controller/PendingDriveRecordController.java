@@ -22,7 +22,7 @@ public class PendingDriveRecordController {
         driveRecordService.create(pendingDriveRecord);
     }
     @GetMapping
-    public PendingDriveRecord getByPhoneNumber(@RequestParam long id) {
+    public PendingDriveRecord getById(@RequestParam long id) {
         return driveRecordService.findById(id);
     }
     @PostMapping

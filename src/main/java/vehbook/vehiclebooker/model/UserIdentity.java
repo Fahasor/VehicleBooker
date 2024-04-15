@@ -3,7 +3,6 @@ package vehbook.vehiclebooker.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Table
 @Entity
 @Data
 @NoArgsConstructor
