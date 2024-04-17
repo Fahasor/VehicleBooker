@@ -7,7 +7,7 @@ import vehbook.vehiclebooker.model.PendingDriveRecord;
 import vehbook.vehiclebooker.service.PendingDriveRecordService;
 
 @RestController
-@RequestMapping("/drivers")
+@RequestMapping("/pending")
 public class PendingDriveRecordController {
     private final PendingDriveRecordService driveRecordService;
 
