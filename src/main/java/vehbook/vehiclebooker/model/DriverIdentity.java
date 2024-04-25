@@ -17,6 +17,6 @@ public class DriverIdentity {
     @Column(unique = true)
     String phoneNumber;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.REFRESH)
     Set<PendingDriveRecord> pendingDriveRecords;
 }

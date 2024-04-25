@@ -14,6 +14,6 @@ public class PendingDriveRecord {
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.REFRESH)
     Set<UserIdentity> assignedUsers;
 }
