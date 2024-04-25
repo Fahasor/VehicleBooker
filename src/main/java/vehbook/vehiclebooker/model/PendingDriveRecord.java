@@ -16,7 +16,4 @@ public class PendingDriveRecord {
 
     @ManyToMany
     List<UserIdentity> assignedUsers;
-
-    @ManyToOne
-    DriverIdentity driver;
 }
