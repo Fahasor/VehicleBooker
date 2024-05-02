@@ -18,13 +18,18 @@ public class DriverIdentityService {
         driverIdentityService.save(driverIdentity);
     }
     public DriverIdentity findByPhoneNumber(String phoneNumber) {
-        return driverIdentityService.findByPhoneNumber(phoneNumber).orElseThrow();
+        return driverIdentityService.
+            findByPhoneNumber(phoneNumber).
+            orElseThrow();
     }
     public void update(DriverIdentity driverIdentity) {
         driverIdentityService.findById(driverIdentity.getId()).orElseThrow();
         driverIdentityService.save(driverIdentity);
     }
     public void deleteById(Long id) {
-        driverIdentityService.delete(driverIdentityService.findById(id).orElseThrow());
+        driverIdentityService.
+            delete(driverIdentityService.
+            findById(id).
+            orElseThrow());
     }
 }
