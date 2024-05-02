@@ -8,18 +8,18 @@ import vehbook.vehiclebooker.repository.DriverIdentityRepository;
 
 @Service
 public class DriverIdentityService {
-    private final DriverIdentityRepository driverIdentityService;
+    private final DriverIdentityRepository driverIdentityRepository;
     private final Cache<String, DriverIdentity> cache;
 
     @Autowired
     public DriverIdentityService(DriverIdentityRepository driverIdentityRepository,
                                  Cache<String, DriverIdentity> cache) {
-        this.driverIdentityService = driverIdentityRepository;
+        this.driverIdentityRepository = driverIdentityRepository;
         this.cache = cache;
     }
 
     public void create(DriverIdentity driverIdentity) {
-        driverIdentityService.save(driverIdentity);
+        driverIdentityRepository.save(driverIdentity);
     }
     public DriverIdentity findByPhoneNumber(String phoneNumber) {
         DriverIdentity driverIdentity = cache.get(phoneNumber);
@@ -27,23 +27,23 @@ public class DriverIdentityService {
         if(driverIdentity != null)
             return driverIdentity;
 
-        driverIdentity = driverIdentityService.
+        driverIdentity = driverIdentityRepository.
             findByPhoneNumber(phoneNumber).
             orElseThrow();
         cache.assign(phoneNumber, driverIdentity);
         return driverIdentity;
     }
     public void update(DriverIdentity driverIdentity) {
-        driverIdentityService.findById(driverIdentity.getId()).orElseThrow();
+        driverIdentityRepository.findById(driverIdentity.getId()).orElseThrow();
 
-        driverIdentityService.save(driverIdentity);
+        driverIdentityRepository.save(driverIdentity);
         cache.assign(driverIdentity.getPhoneNumber(), driverIdentity);
     }
     public void deleteById(Long id) {
-        DriverIdentity driverIdentity = driverIdentityService.
+        DriverIdentity driverIdentity = driverIdentityRepository.
             findById(id).
             orElseThrow();
-        driverIdentityService.delete(driverIdentity);
+        driverIdentityRepository.delete(driverIdentity);
         cache.wipe(driverIdentity.getPhoneNumber());
     }
 }
