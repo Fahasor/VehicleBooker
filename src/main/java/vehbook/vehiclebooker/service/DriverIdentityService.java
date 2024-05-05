@@ -14,7 +14,7 @@ public class DriverIdentityService {
     @Autowired
     public DriverIdentityService(DriverIdentityRepository driverIdentityRepository) {
         this.driverIdentityRepository = driverIdentityRepository;
-        this.cache = new Cache<>();
+        this.cache = new Cache<>(200);
     }
 
     public void create(DriverIdentity driverIdentity) {
