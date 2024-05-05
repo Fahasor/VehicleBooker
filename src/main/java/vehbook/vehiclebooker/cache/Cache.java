@@ -6,9 +6,12 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 
 @Component
-@AllArgsConstructor
 public class Cache<K, V> {
     private final HashMap<K, V> map;
+
+    public Cache() {
+        map = new HashMap<>();
+    }
 
     public V get(K key) {
         return map.get(key);

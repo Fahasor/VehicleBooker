@@ -12,10 +12,9 @@ public class DriverIdentityService {
     private final Cache<String, DriverIdentity> cache;
 
     @Autowired
-    public DriverIdentityService(DriverIdentityRepository driverIdentityRepository,
-                                 Cache<String, DriverIdentity> cache) {
+    public DriverIdentityService(DriverIdentityRepository driverIdentityRepository) {
         this.driverIdentityRepository = driverIdentityRepository;
-        this.cache = cache;
+        this.cache = new Cache<>();
     }
 
     public void create(DriverIdentity driverIdentity) {
