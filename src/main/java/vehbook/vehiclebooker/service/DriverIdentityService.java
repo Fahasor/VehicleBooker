@@ -2,19 +2,19 @@ package vehbook.vehiclebooker.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vehbook.vehiclebooker.cache.Cache;
+import vehbook.vehiclebooker.cache.DriverIdentityCache;
 import vehbook.vehiclebooker.model.DriverIdentity;
 import vehbook.vehiclebooker.repository.DriverIdentityRepository;
 
 @Service
 public class DriverIdentityService {
     private final DriverIdentityRepository driverIdentityRepository;
-    private final Cache<String, DriverIdentity> cache;
+    private final DriverIdentityCache<String, DriverIdentity> cache;
 
     @Autowired
     public DriverIdentityService(DriverIdentityRepository driverIdentityRepository) {
         this.driverIdentityRepository = driverIdentityRepository;
-        this.cache = new Cache<>(200);
+        this.cache = new DriverIdentityCache<>();
     }
 
     public void create(DriverIdentity driverIdentity) {

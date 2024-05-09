@@ -1,18 +1,17 @@
 package vehbook.vehiclebooker.cache;
 
-import lombok.*;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 
 @Component
-public class Cache<K, V> {
+public class DriverIdentityCache<K, V> {
     private final HashMap<K, V> map;
     private final int maxCapacity;
 
-    public Cache(int maxCapacity) {
+    public DriverIdentityCache() {
         map = new HashMap<>();
-        this.maxCapacity = maxCapacity;
+        this.maxCapacity = 200;
     }
 
     public V get(K key) {
