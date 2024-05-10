@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import vehbook.vehiclebooker.model.Driver;
 import vehbook.vehiclebooker.service.DriverService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/drivers")
 public class DriverController {
@@ -24,6 +26,10 @@ public class DriverController {
     @GetMapping
     public Driver getByPhoneNumber(@RequestParam String phoneNumber) {
         return driverService.findByPhoneNumber(phoneNumber);
+    }
+    @GetMapping("/all")
+    public List<Driver> getAll() {
+        return driverService.getAll();
     }
     @PostMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)

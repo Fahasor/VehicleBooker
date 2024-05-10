@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import vehbook.vehiclebooker.model.Driver;
 import vehbook.vehiclebooker.repository.DriverRepository;
 
+import java.util.List;
+
 @Service
 public class DriverService {
     private final DriverRepository driverRepository;
@@ -19,6 +21,9 @@ public class DriverService {
     }
     public Driver findByPhoneNumber(String phoneNumber) {
         return driverRepository.findByPhoneNumber(phoneNumber).orElseThrow();
+    }
+    public List<Driver> getAll() {
+        return driverRepository.findAll();
     }
     public void update(Driver driver) {
         driverRepository.findById(driver.getId()).orElseThrow();
