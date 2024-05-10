@@ -3,10 +3,11 @@ package vehbook.vehiclebooker.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+@Table(name = "users")
 @Entity
 @Data
 @NoArgsConstructor
-public class UserIdentity {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;

@@ -15,7 +15,7 @@ public class PendingDriveRecord {
     long id;
 
     @ManyToMany(cascade = CascadeType.REFRESH)
-    Set<UserIdentity> assignedUsers;
+    Set<User> assignedUsers;
 
     @ManyToOne(cascade =  CascadeType.REFRESH)
     Driver driver;
