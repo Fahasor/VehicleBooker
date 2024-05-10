@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class DriverIdentity {
+public class Driver {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
