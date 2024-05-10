@@ -9,7 +9,7 @@ import java.util.Set;
 @Entity
 @Data
 @NoArgsConstructor
-public class PendingDriveRecord {
+public class DriveRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
