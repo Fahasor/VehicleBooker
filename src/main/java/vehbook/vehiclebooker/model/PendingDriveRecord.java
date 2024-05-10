@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -15,7 +15,7 @@ public class PendingDriveRecord {
     long id;
 
     @ManyToMany(cascade = CascadeType.REFRESH)
-    List<UserIdentity> assignedUsers;
+    Set<UserIdentity> assignedUsers;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
     DriverIdentity driver;
