@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import vehbook.vehiclebooker.model.User;
 import vehbook.vehiclebooker.service.UserService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -24,6 +26,10 @@ public class UserController {
     @GetMapping
     public User getByPhoneNumber(@RequestParam String phoneNumber) {
         return userService.findByPhoneNumber(phoneNumber);
+    }
+    @GetMapping("/all")
+    public List<User> getAll() {
+        return userService.getAll();
     }
     @PostMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
