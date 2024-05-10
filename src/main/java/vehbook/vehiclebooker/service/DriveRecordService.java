@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import vehbook.vehiclebooker.model.DriveRecord;
 import vehbook.vehiclebooker.repository.DriveRecordRepository;
 
+import java.util.List;
+
 @Service
 public class DriveRecordService {
     private final DriveRecordRepository driveRecordRepository;
@@ -19,6 +21,9 @@ public class DriveRecordService {
     }
     public DriveRecord findById(long id) {
         return driveRecordRepository.findById(id).orElseThrow();
+    }
+    public List<DriveRecord> getAll() {
+        return driveRecordRepository.findAll();
     }
     public void update(DriveRecord record) {
         driveRecordRepository.findById(record.getId()).orElseThrow();

@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import vehbook.vehiclebooker.model.DriveRecord;
 import vehbook.vehiclebooker.service.DriveRecordService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/pending")
 public class DriveRecordController {
@@ -24,6 +26,10 @@ public class DriveRecordController {
     @GetMapping
     public DriveRecord getById(@RequestParam long id) {
         return driveRecordService.findById(id);
+    }
+    @GetMapping("/all")
+    public List<DriveRecord> getAll() {
+        return driveRecordService.getAll();
     }
     @PostMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
