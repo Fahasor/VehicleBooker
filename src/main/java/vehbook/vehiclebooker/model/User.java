@@ -14,4 +14,7 @@ public class User {
 
     @Column(unique = true)
     private String phoneNumber;
+
+    @Column
+    private String fullName;
 }

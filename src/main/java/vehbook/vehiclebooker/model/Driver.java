@@ -13,5 +13,8 @@ public class Driver {
     long id;
 
     @Column(unique = true)
-    String phoneNumber;
+    private String phoneNumber;
+
+    @Column
+    private String fullName;
 }

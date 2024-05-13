@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -15,8 +16,11 @@ public class DriveRecord {
     long id;
 
     @ManyToMany(cascade = CascadeType.REFRESH)
-    Set<User> assignedUsers;
+    private Set<User> assignedUsers;
 
-    @ManyToOne(cascade =  CascadeType.REFRESH)
-    Driver driver;
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    private Driver driver;
+
+    @Column
+    private Date departureDate;
 }
