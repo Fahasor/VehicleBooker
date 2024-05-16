@@ -16,5 +16,11 @@ public class Driver {
     private String phoneNumber;
 
     @Column
-    private String fullName;
+    private String surname;
+
+    @Column
+    private String name;
+
+    @Column
+    private String patronymic;
 }
