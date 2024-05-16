@@ -15,21 +15,49 @@ import java.util.Arrays;
 @Component
 public class LoggerAspect {
 
-    @Before("execution(* vehbook.vehiclebooker.service.*.*(..))")
-    public final void logBeforeServiceCommand(final JoinPoint joinPoint) {
-        log.info(() -> String.format("Running method %s with args %s", joinPoint.getSignature().getName(),
-                Arrays.toString(joinPoint.getArgs())));
-    }
+  /**
+   * Defined to log arguments of executable methods.
+   * @param joinPoint JoinPoint of executable method.
+   */
+  @Before("execution(* vehbook.vehiclebooker.service.*.*(..))")
+  public final void logBeforeServiceCommand(final JoinPoint joinPoint) {
+    log.info(
+        () -> String.format(
+            "Running method %s with args %s",
+            joinPoint.getSignature().getName(),
+            Arrays.toString(joinPoint.getArgs())
+        )
+    );
+  }
 
-    @AfterReturning(pointcut = "execution(* vehbook.vehiclebooker.service.*.*(..))")
-    public final void logAfterServiceCommand(final JoinPoint joinPoint) {
-        log.info(() -> String.format("Result of %s: success ", joinPoint.getSignature().getName()));
-    }
+  /**
+   * Defined to log result of executable methods.
+   * @param joinPoint JoinPoint of executable method.
+   */
+  @AfterReturning(pointcut = "execution(* vehbook.vehiclebooker.service.*.*(..))")
+  public final void logAfterServiceCommand(final JoinPoint joinPoint) {
+    log.info(
+        () -> String.format(
+            "Result of %s: success ",
+            joinPoint.getSignature().getName()
+        )
+    );
+  }
 
-    @AfterThrowing(pointcut = "execution(* vehbook.vehiclebooker.*.*.*(..))", throwing = "exception")
-    public final void logAfterError(final JoinPoint joinPoint, final Exception exception) {
-        log.error(
-                () -> String.format("Error while running %s with args %s: %s", joinPoint.getSignature().getName(),
-                        Arrays.toString(joinPoint.getArgs()), exception.getMessage()));
-    }
+  /**
+   * Defined to log Exception throw.
+   * @param joinPoint JoinPont of method that throws exception.
+   * @param exception The exception to be handled.
+   */
+  @AfterThrowing(pointcut = "execution(* vehbook.vehiclebooker.*.*.*(..))", throwing = "exception")
+  public final void logAfterError(final JoinPoint joinPoint, final Exception exception) {
+    log.error(
+        () -> String.format(
+            "Error while running %s with args %s: %s",
+            joinPoint.getSignature().getName(),
+            Arrays.toString(joinPoint.getArgs()),
+            exception.getMessage()
+        )
+    );
+  }
 }

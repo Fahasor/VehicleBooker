@@ -9,11 +9,12 @@ import java.util.List;
 
 @Repository
 public interface PendingDriveRecordRepository
-        extends JpaRepository<PendingDriveRecord, Long> {
-    @Query("SELECT record " +
-            "FROM PendingDriveRecord record " +
-            "JOIN record.assignedUsers users " +
-            "GROUP BY record " +
-            "HAVING COUNT(users.id) > ?1")
-    List<PendingDriveRecord> findAllWhereUsersMoreThan(int usersCount);
+    extends JpaRepository<PendingDriveRecord, Long> {
+
+  @Query("SELECT record "
+      + "FROM PendingDriveRecord record "
+      + "JOIN record.assignedUsers users "
+      + "GROUP BY record "
+      + "HAVING COUNT(users.id) > ?1")
+  List<PendingDriveRecord> findAllWhereUsersMoreThan(int usersCount);
 }

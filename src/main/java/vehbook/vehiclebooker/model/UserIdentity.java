@@ -1,16 +1,22 @@
 package vehbook.vehiclebooker.model;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
 public class UserIdentity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
 
-    @Column(unique = true)
-    private String phoneNumber;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private long id;
+
+  @Column(unique = true)
+  private String phoneNumber;
 }
