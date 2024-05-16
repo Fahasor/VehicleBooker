@@ -20,8 +20,8 @@ public class DriveRecordController {
 
     @PutMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody DriveRecord record) {
-        driveRecordService.create(record);
+    public void create(@RequestBody DriveRecord driveRecord) {
+        driveRecordService.create(driveRecord);
     }
     @GetMapping
     public DriveRecord getById(@RequestParam long id) {
@@ -33,8 +33,8 @@ public class DriveRecordController {
     }
     @PostMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@RequestBody DriveRecord record) {
-        driveRecordService.update(record);
+    public void update(@RequestBody DriveRecord driveRecord) {
+        driveRecordService.update(driveRecord);
     }
     @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)

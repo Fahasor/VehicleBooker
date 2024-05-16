@@ -25,9 +25,9 @@ public class DriveRecordService {
     public List<DriveRecord> getAll() {
         return driveRecordRepository.findAll();
     }
-    public void update(DriveRecord record) {
-        driveRecordRepository.findById(record.getId()).orElseThrow();
-        driveRecordRepository.save(record);
+    public void update(DriveRecord driveRecord) {
+        driveRecordRepository.findById(driveRecord.getId()).orElseThrow();
+        driveRecordRepository.save(driveRecord);
     }
     public void deleteById(Long id) {
         driveRecordRepository.delete(driveRecordRepository.findById(id).orElseThrow());
