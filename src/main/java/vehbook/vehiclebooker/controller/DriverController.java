@@ -18,7 +18,7 @@ public class DriverController {
         driverService = service;
     }
 
-    @PutMapping
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody Driver driver) {
         driverService.create(driver);
@@ -31,7 +31,7 @@ public class DriverController {
     public List<Driver> getAll() {
         return driverService.getAll();
     }
-    @PostMapping
+    @PutMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@RequestBody Driver driver) {
         driverService.update(driver);

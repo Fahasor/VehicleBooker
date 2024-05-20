@@ -18,7 +18,7 @@ public class UserController {
         this.userService = service;
     }
 
-    @PutMapping
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody User user) {
         userService.create(user);
@@ -31,7 +31,7 @@ public class UserController {
     public List<User> getAll() {
         return userService.getAll();
     }
-    @PostMapping
+    @PutMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@RequestBody User user) {
         userService.update(user);

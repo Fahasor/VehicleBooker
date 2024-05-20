@@ -18,7 +18,7 @@ public class DriveRecordController {
         driveRecordService = service;
     }
 
-    @PutMapping
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody DriveRecord driveRecord) {
         driveRecordService.create(driveRecord);
@@ -31,7 +31,7 @@ public class DriveRecordController {
     public List<DriveRecord> getAll() {
         return driveRecordService.getAll();
     }
-    @PostMapping
+    @PutMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@RequestBody DriveRecord driveRecord) {
         driveRecordService.update(driveRecord);
