@@ -28,8 +28,8 @@ public class DriveRecordController {
         return driveRecordService.findById(id);
     }
     @GetMapping("/all")
-    public List<DriveRecord> getAll() {
-        return driveRecordService.getAll();
+    public List<DriveRecord> getAllWithUsersMoreThan(@RequestParam int usersNum) {
+        return driveRecordService.findAllWithUsersMoreThan(usersNum);
     }
     @PutMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
