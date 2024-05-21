@@ -36,6 +36,11 @@ public class DriveRecordController {
     public void update(@RequestBody DriveRecord driveRecord) {
         driveRecordService.update(driveRecord);
     }
+    @PutMapping("/users")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void addUsersToRecord(@RequestParam Long id, @RequestBody List<Long> userIds) {
+        driveRecordService.addUsersToRecord(id, userIds);
+    }
     @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@RequestParam Long id) {
