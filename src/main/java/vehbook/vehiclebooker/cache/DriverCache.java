@@ -17,21 +17,22 @@ public class DriverCache<K, V> {
     public V get(K key) {
         return map.get(key);
     }
-    public boolean assign(K key, V value) {
-        if(map.size() >= maxCapacity)
-            return false;
 
-        if(map.containsKey(key))
-        {
+    public boolean assign(K key, V value) {
+        if(map.size() >= maxCapacity) {
+            return false;
+        }
+
+        if(map.containsKey(key)) {
             map.replace(key, value);
         }
-        else
-        {
+        else {
             map.put(key, value);
         }
 
         return true;
     }
+
     public void wipe(K key) {
         map.remove(key);
     }
