@@ -41,4 +41,9 @@ public class DriveRecordController {
     public void deleteById(@RequestParam Long id) {
         driveRecordService.deleteById(id);
     }
+    @DeleteMapping("/users")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteUsersFromRecord(@RequestParam Long id, @RequestBody List<Long> userIds) {
+        driveRecordService.deleteUsersFromRecord(id, userIds);
+    }
 }
