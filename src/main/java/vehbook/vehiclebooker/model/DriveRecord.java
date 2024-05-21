@@ -1,7 +1,7 @@
 package vehbook.vehiclebooker.model;
 
 import jakarta.persistence.*;
-import java.util.List;
+import java.util.Set;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,7 +16,7 @@ public class DriveRecord {
     long id;
 
     @ManyToMany(cascade = CascadeType.REFRESH)
-    private List<User> assignedUsers;
+    private Set<User> assignedUsers;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
     private Driver driver;
