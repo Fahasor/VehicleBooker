@@ -39,10 +39,10 @@ public class DriveRecordService {
     }
     @Transactional
     public void addUsersToRecord(Long recordId, Collection<Long> usersIds) {
-        DriveRecord record = driveRecordRepository.findById(recordId).orElseThrow();
+        DriveRecord driveRecord = driveRecordRepository.findById(recordId).orElseThrow();
 
         for(Long id : usersIds) {
-            record.getAssignedUsers().add(userRepository.findById(id).orElseThrow());
+            driveRecord.getAssignedUsers().add(userRepository.findById(id).orElseThrow());
         }
     }
     public void deleteById(Long id) {
@@ -51,7 +51,7 @@ public class DriveRecordService {
 
     @Transactional
     public void deleteUsersFromRecord(Long recordId, Collection<Long> usersIds) {
-        DriveRecord record = driveRecordRepository.findById(recordId).orElseThrow();
-        record.getAssignedUsers().removeIf(user -> usersIds.contains(user.getId()));
+        DriveRecord driveRecord = driveRecordRepository.findById(recordId).orElseThrow();
+        driveRecord.getAssignedUsers().removeIf(user -> usersIds.contains(user.getId()));
     }
 }
