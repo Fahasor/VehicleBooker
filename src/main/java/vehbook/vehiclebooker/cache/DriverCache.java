@@ -17,14 +17,13 @@ public class DriverCache<K extends Comparable<K>, V> {
     }
 
     public void assign(K key, V value) {
-        if(map.size() >= maxCapacity) {
-            map.pollLastEntry();
-        }
-
         if(map.containsKey(key)) {
             map.replace(key, value);
         }
         else {
+            if(map.size() >= maxCapacity) {
+                map.pollLastEntry();
+            }
             map.put(key, value);
         }
     }
