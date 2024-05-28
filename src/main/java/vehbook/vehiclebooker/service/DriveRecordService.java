@@ -43,7 +43,13 @@ public class DriveRecordService {
     driveRecordRepository.findById(driveRecord.getId()).orElseThrow();
     driveRecordRepository.save(driveRecord);
   }
-  
+
+  /**
+   * Adds User entities with userIds ids to DriveRecord with recordId id.
+   * @param recordId id of DriveRecord entity.
+   * @param usersIds ids of User entities that will be added to DriveRecord entity.
+   * @throws java.util.NoSuchElementException If one of id does not have associated entity.
+   */
   @Transactional
   public void addUsersToRecord(Long recordId, Collection<Long> usersIds) {
     DriveRecord driveRecord = driveRecordRepository.findById(recordId).orElseThrow();
