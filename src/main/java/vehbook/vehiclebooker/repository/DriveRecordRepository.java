@@ -9,10 +9,11 @@ import java.util.List;
 
 @Repository
 public interface DriveRecordRepository extends JpaRepository<DriveRecord, Long> {
-    @Query("SELECT record " +
-            "FROM DriveRecord record " +
-            "JOIN record.assignedUsers users " +
-            "GROUP BY record " +
-            "HAVING COUNT(users.id) > ?1")
-    List<DriveRecord> findAllWhereUsersMoreThan(int usersCount);
+
+  @Query("SELECT record "
+      + "FROM DriveRecord record "
+      + "JOIN record.assignedUsers users "
+      + "GROUP BY record "
+      + "HAVING COUNT(users.id) > ?1")
+  List<DriveRecord> findAllWhereUsersMoreThan(int usersCount);
 }

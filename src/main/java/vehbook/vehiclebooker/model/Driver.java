@@ -1,6 +1,10 @@
 package vehbook.vehiclebooker.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,19 +12,20 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Driver {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
 
-    @Column(unique = true)
-    private String phoneNumber;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  long id;
 
-    @Column
-    private String surname;
+  @Column(unique = true)
+  private String phoneNumber;
 
-    @Column
-    private String name;
+  @Column
+  private String surname;
 
-    @Column
-    private String patronymic;
+  @Column
+  private String name;
+
+  @Column
+  private String patronymic;
 }
