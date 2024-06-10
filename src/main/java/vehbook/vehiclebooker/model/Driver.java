@@ -15,7 +15,7 @@ public class Driver {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  long id;
+  Long id;
 
   @Column(unique = true)
   private String phoneNumber;

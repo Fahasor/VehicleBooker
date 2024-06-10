@@ -21,7 +21,7 @@ public class DriveRecord {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  long id;
+  Long id;
 
   @ManyToMany(cascade = CascadeType.REFRESH)
   private Set<User> assignedUsers;
