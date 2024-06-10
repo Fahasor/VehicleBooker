@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import vehbook.vehiclebooker.model.Driver;
 import vehbook.vehiclebooker.model.User;
 import vehbook.vehiclebooker.service.UserService;
 
@@ -31,6 +32,12 @@ public class UserController {
   @ResponseStatus(HttpStatus.CREATED)
   public void create(@RequestBody User user) {
     userService.create(user);
+  }
+
+  @PostMapping("/bulk")
+  @ResponseStatus(HttpStatus.CREATED)
+  public void create(@RequestBody List<User> users) {
+    userService.create(users);
   }
 
   @GetMapping

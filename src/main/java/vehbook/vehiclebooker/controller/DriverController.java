@@ -33,6 +33,12 @@ public class DriverController {
     driverService.create(driver);
   }
 
+  @PostMapping("/bulk")
+  @ResponseStatus(HttpStatus.CREATED)
+  public void create(@RequestBody List<Driver> drivers) {
+    driverService.create(drivers);
+  }
+
   @GetMapping
   public Driver getByPhoneNumber(@RequestParam String phoneNumber) {
     return driverService.findByPhoneNumber(phoneNumber);

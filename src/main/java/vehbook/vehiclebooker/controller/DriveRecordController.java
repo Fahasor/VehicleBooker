@@ -33,6 +33,12 @@ public class DriveRecordController {
     driveRecordService.create(driveRecord);
   }
 
+  @PostMapping("/bulk")
+  @ResponseStatus(HttpStatus.CREATED)
+  public void create(@RequestBody List<DriveRecord> driveRecords) {
+    driveRecordService.create(driveRecords);
+  }
+
   @GetMapping
   public DriveRecord getById(@RequestParam long id) {
     return driveRecordService.findById(id);
