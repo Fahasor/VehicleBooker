@@ -1,5 +1,6 @@
 package vehbook.vehiclebooker.service;
 
+import jakarta.persistence.EntityExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vehbook.vehiclebooker.model.User;
@@ -18,6 +19,12 @@ public class UserService {
   }
 
   public void create(User user) {
+    if(users.findById(user.getId()).isPresent()) {
+      throw new EntityExistsException("user with id: "
+          + user.getId().toString()
+          + " already exists in database.");
+    }
+
     users.save(user);
   }
 

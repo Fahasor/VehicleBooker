@@ -1,5 +1,6 @@
 package vehbook.vehiclebooker.service;
 
+import jakarta.persistence.EntityExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vehbook.vehiclebooker.cache.DriverCache;
@@ -21,6 +22,12 @@ public class DriverService {
   }
 
   public void create(Driver driver) {
+    if(driverRepository.findById(driver.getId()).isPresent()) {
+      throw new EntityExistsException("Driver with id: "
+          + driver.getId().toString()
+          + " already exists in database.");
+    }
+
     driverRepository.save(driver);
   }
 

@@ -1,6 +1,8 @@
 package vehbook.vehiclebooker.service;
 
+import jakarta.persistence.EntityExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import vehbook.vehiclebooker.model.DriveRecord;
@@ -23,8 +25,14 @@ public class DriveRecordService {
     this.userRepository = userRepository;
   }
 
-  public void create(DriveRecord driver) {
-    driveRecordRepository.save(driver);
+  public void create(DriveRecord driveRecord) {
+    if(driveRecordRepository.findById(driveRecord.getId()).isPresent()) {
+      throw new EntityExistsException("Drive record with id: "
+          + driveRecord.getId().toString()
+          + " already exists in database.");
+    }
+
+    driveRecordRepository.save(driveRecord);
   }
 
   public DriveRecord findById(long id) {
