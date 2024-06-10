@@ -11,37 +11,37 @@ import java.util.List;
 @Service
 public class UserService {
 
-  private final UserRepository users;
+  private final UserRepository userRepository;
 
   @Autowired
   public UserService(UserRepository userRepository) {
-    this.users = userRepository;
+    this.userRepository = userRepository;
   }
 
   public void create(User user) {
-    if(users.findById(user.getId()).isPresent()) {
+    if(userRepository.findById(user.getId()).isPresent()) {
       throw new EntityExistsException("user with id: "
           + user.getId().toString()
           + " already exists in database.");
     }
 
-    users.save(user);
+    userRepository.save(user);
   }
 
   public User findByPhoneNumber(String phoneNumber) {
-    return users.findByPhoneNumber(phoneNumber).orElseThrow();
+    return userRepository.findByPhoneNumber(phoneNumber).orElseThrow();
   }
 
   public List<User> getAll() {
-    return users.findAll();
+    return userRepository.findAll();
   }
 
   public void update(User user) {
-    users.findById(user.getId()).orElseThrow();
-    users.save(user);
+    userRepository.findById(user.getId()).orElseThrow();
+    userRepository.save(user);
   }
 
   public void deleteById(Long id) {
-    users.delete(users.findById(id).orElseThrow());
+    userRepository.delete(userRepository.findById(id).orElseThrow());
   }
 }
