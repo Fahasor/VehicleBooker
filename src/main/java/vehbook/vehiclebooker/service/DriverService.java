@@ -16,9 +16,9 @@ public class DriverService {
   private final DriverCache<String, Driver> cache;
 
   @Autowired
-  public DriverService(DriverRepository driverRepository) {
+  public DriverService(DriverRepository driverRepository, DriverCache<String, Driver> driverCache) {
     this.driverRepository = driverRepository;
-    this.cache = new DriverCache<>();
+    this.cache = driverCache;
   }
 
   public void create(Driver driver) {
