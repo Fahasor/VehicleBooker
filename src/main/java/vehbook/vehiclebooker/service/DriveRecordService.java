@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import vehbook.vehiclebooker.dto.DriveRecordUserLinksDto;
 import vehbook.vehiclebooker.model.DriveRecord;
 import vehbook.vehiclebooker.model.Driver;
 import vehbook.vehiclebooker.repository.DriveRecordRepository;
@@ -69,15 +70,15 @@ public class DriveRecordService {
   }
 
   @Transactional
-  public void addUsersToRecord(List<Pair<Long, List<Long>>> connections) {
+  public void addUsersToRecord(List<DriveRecordUserLinksDto> connections) {
     connections.stream()
         .forEach(
             (connection) -> {
               DriveRecord record = driveRecordRepository
-                  .findById(connection.a)
+                  .findById(connection.getDriverId())
                   .orElseThrow();
 
-              connection.b.forEach(
+              connection.getUsersIds().forEach(
                   (id) -> {
                     record
                         .getAssignedUsers()
