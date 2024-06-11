@@ -2,16 +2,16 @@ package vehbook.vehiclebooker.cache;
 
 import org.springframework.stereotype.Component;
 
-import java.util.TreeMap;
+import java.util.LinkedHashMap;
 
 @Component
 public class DriverCache<K extends Comparable<K>, V> {
 
-  private final TreeMap<K, V> map;
+  private final LinkedHashMap<K, V> map;
   private static final int maxCapacity = 200;
 
   public DriverCache() {
-    map = new TreeMap<>();
+    map = new LinkedHashMap<>();
   }
 
   int getMaxCapacity() {
@@ -35,7 +35,7 @@ public class DriverCache<K extends Comparable<K>, V> {
       map.replace(key, value);
     } else {
       if (map.size() >= maxCapacity) {
-        map.pollLastEntry();
+        map.remove(map.keySet().iterator().next());
       }
       map.put(key, value);
     }
