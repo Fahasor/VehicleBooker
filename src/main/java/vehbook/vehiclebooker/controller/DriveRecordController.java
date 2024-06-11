@@ -1,5 +1,6 @@
 package vehbook.vehiclebooker.controller;
 
+import org.antlr.v4.runtime.misc.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -59,6 +60,12 @@ public class DriveRecordController {
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void addUsersToRecord(@RequestParam Long id, @RequestBody List<Long> userIds) {
     driveRecordService.addUsersToRecord(id, userIds);
+  }
+
+  @PutMapping("/users/bulk")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  public void update(@RequestBody List<Pair<Long, List<Long>>> connections) {
+    driveRecordService.addUsersToRecord(connections);
   }
 
   @DeleteMapping

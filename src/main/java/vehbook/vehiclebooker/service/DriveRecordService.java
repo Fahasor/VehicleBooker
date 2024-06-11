@@ -1,6 +1,7 @@
 package vehbook.vehiclebooker.service;
 
 import jakarta.persistence.EntityExistsException;
+import org.antlr.v4.runtime.misc.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
@@ -65,6 +66,27 @@ public class DriveRecordService {
   public void update(DriveRecord driveRecord) {
     driveRecordRepository.findById(driveRecord.getId()).orElseThrow();
     driveRecordRepository.save(driveRecord);
+  }
+
+  @Transactional
+  public void addUsersToRecord(List<Pair<Long, List<Long>>> connections) {
+    connections.stream()
+        .forEach(
+            (connection) -> {
+              DriveRecord record = driveRecordRepository
+                  .findById(connection.a)
+                  .orElseThrow();
+
+              connection.b.forEach(
+                  (id) -> {
+                    record
+                        .getAssignedUsers()
+                        .add(
+                            userRepository
+                                .findById(id)
+                                .orElseThrow());
+                  });
+            });
   }
 
   /**
