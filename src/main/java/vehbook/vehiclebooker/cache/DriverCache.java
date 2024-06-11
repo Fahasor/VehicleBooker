@@ -14,6 +14,10 @@ public class DriverCache<K extends Comparable<K>, V> {
     map = new TreeMap<>();
   }
 
+  int getMaxCapacity() {
+    return maxCapacity;
+  }
+
   public V get(K key) {
     return map.get(key);
   }
