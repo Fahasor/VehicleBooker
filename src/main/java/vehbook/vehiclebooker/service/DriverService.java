@@ -22,12 +22,6 @@ public class DriverService {
   }
 
   public void create(Driver driver) {
-    if (driverRepository.findById(driver.getId()).isPresent()) {
-      throw new EntityExistsException("Driver with id: "
-          + driver.getId().toString()
-          + " already exists in database.");
-    }
-
     driverRepository.save(driver);
   }
 
