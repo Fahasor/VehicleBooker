@@ -26,7 +26,7 @@ public class DriveRecordService {
   }
 
   public void create(DriveRecord driveRecord) {
-    if(driveRecordRepository.findById(driveRecord.getId()).isPresent()) {
+    if (driveRecordRepository.findById(driveRecord.getId()).isPresent()) {
       throw new EntityExistsException("Drive record with id: "
           + driveRecord.getId().toString()
           + " already exists in database.");

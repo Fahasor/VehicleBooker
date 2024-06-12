@@ -19,7 +19,7 @@ public class UserService {
   }
 
   public void create(User user) {
-    if(userRepository.findById(user.getId()).isPresent()) {
+    if (userRepository.findById(user.getId()).isPresent()) {
       throw new EntityExistsException("user with id: "
           + user.getId().toString()
           + " already exists in database.");
