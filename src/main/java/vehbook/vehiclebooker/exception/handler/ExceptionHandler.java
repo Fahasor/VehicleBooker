@@ -47,7 +47,8 @@ public final class ExceptionHandler {
       JsonProcessingException.class,
       DateTimeParseException.class,
       IllegalArgumentException.class})
-  public ResponseEntity<ExceptionMessage> handleBadRequestErrorException(Exception exception) {
+  public ResponseEntity<ExceptionMessage> handleBadRequestErrorException(
+      Exception exception) {
     return new ResponseEntity<>(
         new ExceptionMessage(
             HttpStatus.BAD_REQUEST.value(),
@@ -62,11 +63,13 @@ public final class ExceptionHandler {
    * @return ResponseEntity with error information and response status.
    */
   @org.springframework.web.bind.annotation.ExceptionHandler({DataIntegrityViolationException.class})
-  public ResponseEntity<ExceptionMessage> handleInternalServerErrorException(Exception exception) {
+  public ResponseEntity<ExceptionMessage> handleInternalServerErrorException(
+      Exception exception) {
     return new ResponseEntity<>(
         new ExceptionMessage(
             HttpStatus.INTERNAL_SERVER_ERROR.value(),
-            "do not enter not unique value in unique field. more: " + exception.getMessage()),
+            "do not enter not unique value in unique field. more: "
+                + exception.getMessage()),
         HttpStatus.INTERNAL_SERVER_ERROR);
   }
 
@@ -110,7 +113,8 @@ public final class ExceptionHandler {
    */
   @org.springframework.web.bind.annotation.ExceptionHandler(
       HttpRequestMethodNotSupportedException.class)
-  public ResponseEntity<ExceptionMessage> handleMethodNotAllowed(Exception exception) {
+  public ResponseEntity<ExceptionMessage> handleMethodNotAllowed(
+      Exception exception) {
     return new ResponseEntity<>(
         new ExceptionMessage(
             HttpStatus.METHOD_NOT_ALLOWED.value(),
