@@ -63,7 +63,7 @@ public final class ExceptionHandler {
    * @return ResponseEntity with error information and response status.
    */
   @org.springframework.web.bind.annotation.ExceptionHandler({DataIntegrityViolationException.class})
-  public ResponseEntity<ExceptionMessage> handleInternalServerErrorException(
+  public ResponseEntity<ExceptionMessage> handleDataIntegrityViolationException(
       Exception exception) {
     return new ResponseEntity<>(
         new ExceptionMessage(
@@ -80,8 +80,8 @@ public final class ExceptionHandler {
    * @return ResponseEntity with error information and response status.
    */
   @org.springframework.web.bind.annotation.ExceptionHandler({RuntimeException.class})
-  public ResponseEntity<ExceptionMessage> handleInternalServerErrorException(
-      RuntimeException exception) {
+  public ResponseEntity<ExceptionMessage> handleRuntimeException(
+      Exception exception) {
     return new ResponseEntity<>(
         new ExceptionMessage(
             HttpStatus.INTERNAL_SERVER_ERROR.value(),
@@ -97,7 +97,7 @@ public final class ExceptionHandler {
    */
   @org.springframework.web.bind.annotation.ExceptionHandler(NoHandlerFoundException.class)
   public ResponseEntity<ExceptionMessage> handleNoHandlerFoundException(
-      NoHandlerFoundException exception) {
+      Exception exception) {
     return new ResponseEntity<>(
         new ExceptionMessage(
             HttpStatus.NOT_FOUND.value(),
