@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.aspectj.lang.annotation.Aspect;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -21,8 +20,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import java.time.format.DateTimeParseException;
 
 @ControllerAdvice
-@Aspect
-public final class ExceptionHandler {
+public class ExceptionHandler {
 
   @Data
   @AllArgsConstructor
