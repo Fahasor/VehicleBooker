@@ -25,7 +25,7 @@ public class LoggerAspect {
     log.info(
         () -> String.format(
             "Running method %s with args %s",
-            joinPoint.getSignature().getName(),
+            joinPoint.getSignature(),
             Arrays.toString(joinPoint.getArgs())
         )
     );
@@ -41,7 +41,7 @@ public class LoggerAspect {
     log.info(
         () -> String.format(
             "Result of %s: success ",
-            joinPoint.getSignature().getName()
+            joinPoint.getSignature()
         )
     );
   }
@@ -57,7 +57,7 @@ public class LoggerAspect {
     log.error(
         () -> String.format(
             "Error while running %s with args %s: %s",
-            joinPoint.getSignature().getName(),
+            joinPoint.getSignature(),
             Arrays.toString(joinPoint.getArgs()),
             exception.getMessage()
         )

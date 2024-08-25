@@ -56,18 +56,19 @@ public final class ExceptionHandler {
   }
 
   /**
-   * Handles exceptions related to server error 500 code (HTTP 500 Internal Server Error).
+   * Handles exceptions related to server error 400 code (HTTP 400 Bad Request).
    *
    * @param exception The exception to be handled.
    * @return ResponseEntity with error information and response status.
    */
   @org.springframework.web.bind.annotation.ExceptionHandler({DataIntegrityViolationException.class})
-  public ResponseEntity<ExceptionMessage> handleInternalServerErrorException(Exception exception) {
+  public ResponseEntity<ExceptionMessage> handleDataIntegrityViolationException
+  (Exception exception) {
     return new ResponseEntity<>(
         new ExceptionMessage(
-            HttpStatus.INTERNAL_SERVER_ERROR.value(),
-            "do not enter not unique value in unique field. more: " + exception.getMessage()),
-        HttpStatus.INTERNAL_SERVER_ERROR);
+            HttpStatus.BAD_REQUEST.value(),
+            "database constraints violation"),
+        HttpStatus.BAD_REQUEST);
   }
 
   /**
