@@ -1,6 +1,8 @@
 package vehbook.vehiclebooker.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -47,8 +49,8 @@ public class DriverController {
   }
 
   @GetMapping("/all")
-  public List<Driver> getAll() {
-    return driverService.getAll();
+  public Page<Driver> getPage(@RequestParam Integer pageNumber, @RequestParam Integer pageSize) {
+    return driverService.getPage(PageRequest.of(pageNumber, pageSize));
   }
 
   @PutMapping

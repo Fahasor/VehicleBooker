@@ -1,6 +1,9 @@
 package vehbook.vehiclebooker.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import vehbook.vehiclebooker.model.User;
 import vehbook.vehiclebooker.repository.UserRepository;
@@ -30,8 +33,8 @@ public class UserService {
     return userRepository.findByPhoneNumber(phoneNumber).orElseThrow();
   }
 
-  public List<User> getAll() {
-    return userRepository.findAll();
+  public Page<User> getPage(PageRequest request) {
+    return userRepository.findAll(request);
   }
 
   public void update(User user) {

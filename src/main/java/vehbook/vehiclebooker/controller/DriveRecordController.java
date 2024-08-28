@@ -1,6 +1,8 @@
 package vehbook.vehiclebooker.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -48,6 +50,12 @@ public class DriveRecordController {
   }
 
   @GetMapping("/all")
+  public Page<DriveRecord> getAll(
+      @RequestParam Integer pageNumber, @RequestParam Integer pageSize) {
+    return driveRecordService.getPage(PageRequest.of(pageNumber, pageSize));
+  }
+
+  @GetMapping("/all/usersMoreThen")
   public List<DriveRecord> getAllWithUsersMoreThan(@RequestParam int usersNum) {
     return driveRecordService.findAllWithUsersMoreThan(usersNum);
   }

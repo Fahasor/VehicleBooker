@@ -1,6 +1,8 @@
 package vehbook.vehiclebooker.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import vehbook.vehiclebooker.dto.DriveRecordUserLinksDto;
@@ -40,8 +42,8 @@ public class DriveRecordService {
     return driveRecordRepository.findAllWhereUsersMoreThan(usersNum);
   }
 
-  public List<DriveRecord> getAll() {
-    return driveRecordRepository.findAll();
+  public Page<DriveRecord> getPage(PageRequest request) {
+    return driveRecordRepository.findAll(request);
   }
 
   public void update(DriveRecord driveRecord) {

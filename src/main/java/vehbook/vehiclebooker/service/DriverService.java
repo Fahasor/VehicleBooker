@@ -2,6 +2,8 @@ package vehbook.vehiclebooker.service;
 
 import jakarta.persistence.EntityExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import vehbook.vehiclebooker.cache.DriverCache;
 import vehbook.vehiclebooker.model.Driver;
@@ -77,7 +79,7 @@ public class DriverService {
     cache.wipe(driver.getPhoneNumber());
   }
 
-  public List<Driver> getAll() {
-    return driverRepository.findAll();
+  public Page<Driver> getPage(PageRequest request) {
+    return driverRepository.findAll(request);
   }
 }
