@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import vehbook.vehiclebooker.dto.DriveRecordPostDto;
+import vehbook.vehiclebooker.dto.DriveRecordPutDto;
 import vehbook.vehiclebooker.dto.DriveRecordUserLinksDto;
 import vehbook.vehiclebooker.model.DriveRecord;
 import vehbook.vehiclebooker.service.DriveRecordService;
@@ -63,7 +64,7 @@ public class DriveRecordController {
 
   @PutMapping
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  public void update(@RequestBody DriveRecord driveRecord) {
+  public void update(@RequestBody DriveRecordPutDto driveRecord) {
     driveRecordService.update(driveRecord);
   }
 

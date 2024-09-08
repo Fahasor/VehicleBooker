@@ -8,7 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import vehbook.vehiclebooker.dto.DriveRecordDto;
 import vehbook.vehiclebooker.dto.DriveRecordPostDto;
+import vehbook.vehiclebooker.dto.DriveRecordPutDto;
 import vehbook.vehiclebooker.dto.DriveRecordUserLinksDto;
 import vehbook.vehiclebooker.model.DriveRecord;
 import vehbook.vehiclebooker.model.User;
@@ -27,7 +29,7 @@ public class DriveRecordService {
   private final UserRepository userRepository;
   private final DriverRepository driverRepository;
 
-  DriveRecord convert(DriveRecordPostDto driveRecordRawData) {
+  DriveRecord convert(DriveRecordDto driveRecordRawData) {
     DriveRecord driveRecord = new DriveRecord();
     driveRecord.setDepartureDate(driveRecordRawData.getDepartureDate());
 
@@ -67,8 +69,9 @@ public class DriveRecordService {
     return driveRecordRepository.findAll(request);
   }
 
-  public void update(DriveRecord driveRecord) {
-    driveRecordRepository.findById(driveRecord.getId()).orElseThrow();
+  public void update(DriveRecordPutDto driveRecordRawData) {
+    DriveRecord driveRecord = convert(driveRecordRawData);
+    driveRecord.setId(driveRecordRawData.getId());
     driveRecordRepository.save(driveRecord);
   }
 
