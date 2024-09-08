@@ -10,6 +10,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DriveRecordUserLinksDto {
-  private Long driverId;
+  private Long driveId;
   private List<Long> usersIds;
 }

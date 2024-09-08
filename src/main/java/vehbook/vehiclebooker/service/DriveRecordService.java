@@ -78,7 +78,7 @@ public class DriveRecordService {
         .forEach(
             (connection) -> {
               DriveRecord record = driveRecordRepository
-                  .findById(connection.getDriverId())
+                  .findById(connection.getDriveId())
                   .orElseThrow();
 
               connection.getUsersIds().forEach(
