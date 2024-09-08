@@ -22,6 +22,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import vehbook.vehiclebooker.dto.DriveRecordPostDto;
 import vehbook.vehiclebooker.dto.DriveRecordUserLinksDto;
 import vehbook.vehiclebooker.model.DriveRecord;
 import vehbook.vehiclebooker.model.User;
@@ -37,7 +38,7 @@ class DriveRecordServiceTest {
 
   @Test
   void testCreate() {
-    DriveRecord driveRecord = new DriveRecord();
+    DriveRecord driveRecord = new DriveRecordPostDto();
 
     driveRecordService.create(driveRecord);
 

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import vehbook.vehiclebooker.dto.DriveRecordPostDto;
 import vehbook.vehiclebooker.dto.DriveRecordUserLinksDto;
 import vehbook.vehiclebooker.model.DriveRecord;
 import vehbook.vehiclebooker.service.DriveRecordService;
@@ -34,13 +35,13 @@ public class DriveRecordController {
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public void create(@RequestBody DriveRecord driveRecord) {
+  public void create(@RequestBody DriveRecordPostDto driveRecord) {
     driveRecordService.create(driveRecord);
   }
 
   @PostMapping("/bulk")
   @ResponseStatus(HttpStatus.CREATED)
-  public void create(@RequestBody List<DriveRecord> driveRecords) {
+  public void create(@RequestBody List<DriveRecordPostDto> driveRecords) {
     driveRecordService.create(driveRecords);
   }
 

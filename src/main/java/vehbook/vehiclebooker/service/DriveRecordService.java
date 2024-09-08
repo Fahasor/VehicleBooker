@@ -1,37 +1,58 @@
 package vehbook.vehiclebooker.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import vehbook.vehiclebooker.dto.DriveRecordPostDto;
 import vehbook.vehiclebooker.dto.DriveRecordUserLinksDto;
 import vehbook.vehiclebooker.model.DriveRecord;
+import vehbook.vehiclebooker.model.User;
 import vehbook.vehiclebooker.repository.DriveRecordRepository;
+import vehbook.vehiclebooker.repository.DriverRepository;
 import vehbook.vehiclebooker.repository.UserRepository;
 
 import java.util.Collection;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class DriveRecordService {
 
   private final DriveRecordRepository driveRecordRepository;
   private final UserRepository userRepository;
+  private final DriverRepository driverRepository;
 
-  @Autowired
-  public DriveRecordService(DriveRecordRepository driveRecordRepository,
-      UserRepository userRepository) {
-    this.driveRecordRepository = driveRecordRepository;
-    this.userRepository = userRepository;
+  DriveRecord convert(DriveRecordPostDto driveRecordRawData) {
+    DriveRecord driveRecord = new DriveRecord();
+    driveRecord.setDepartureDate(driveRecordRawData.getDepartureDate());
+
+    driveRecord.setDriver(
+        driverRepository
+            .findByPhoneNumber(
+                driveRecordRawData
+                    .getDriverPhoneNumber())
+            .orElseThrow());
+
+    Set<User> driveRecords = driveRecordRawData.getUsersPhoneNumbers().stream()
+        .map(phoneNumber -> (userRepository.findByPhoneNumber(phoneNumber).orElseThrow()))
+        .collect(Collectors.toSet());
+
+    driveRecord.setAssignedUsers(driveRecords);
+
+    return driveRecord;
   }
 
-  public void create(DriveRecord driveRecord) {
-    driveRecordRepository.save(driveRecord);
+  public void create(DriveRecordPostDto driveRecordRawData) {
+    driveRecordRepository.save(convert(driveRecordRawData));
   }
 
-  public void create(List<DriveRecord> driveRecords) {
-    driveRecordRepository.saveAll(driveRecords);
+  public void create(List<DriveRecordPostDto> driveRecordsRawData) {
+    driveRecordRepository.saveAll(driveRecordsRawData.stream().map(this::convert).toList());
   }
 
   public DriveRecord findById(long id) {
