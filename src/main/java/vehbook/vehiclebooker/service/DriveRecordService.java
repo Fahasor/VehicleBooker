@@ -75,6 +75,12 @@ public class DriveRecordService {
     driveRecordRepository.save(driveRecord);
   }
 
+  public void update(Long id, String newDriverPhone) {
+    DriveRecord driveRecord = driveRecordRepository.findById(id).orElseThrow();
+    driveRecord.setDriver(driverRepository.findByPhoneNumber(newDriverPhone).orElseThrow());
+    driveRecordRepository.save(driveRecord);
+  }
+
   @Transactional
   public void addUsersToRecord(List<DriveRecordUserLinksDto> connections) {
     connections.stream()

@@ -74,6 +74,12 @@ public class DriveRecordController {
     driveRecordService.addUsersToRecord(id, userIds);
   }
 
+  @PutMapping("/driver")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  public void update(@RequestParam Long id, @RequestParam String newDriverPhone) {
+    driveRecordService.update(id, newDriverPhone);
+  }
+
   @PutMapping("/users/bulk")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void update(@RequestBody List<DriveRecordUserLinksDto> connections) {
