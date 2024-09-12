@@ -1,0 +1,8 @@
+.idea
+logs
+target
+.dockerignore
+.gitignore
+README.md
+README.Docker.md
+src/test
